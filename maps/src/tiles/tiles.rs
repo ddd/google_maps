@@ -6,14 +6,13 @@ use hyper_util::{client::legacy::Client, client::legacy::connect::HttpConnector}
 use serde_json::Value;
 
 
-pub async fn view_tiles(client: &Client<HttpsConnector<HttpConnector>, Empty<Bytes>>, host: &str, tiles: &Vec<crate::tiles::types::Tile>) -> Result<Vec<String>, crate::tiles::error::FetchTilesError> {
+pub async fn view_tiles(client: &Client<HttpsConnector<HttpConnector>, Empty<Bytes>>, tiles: &Vec<crate::tiles::types::Tile>) -> Result<Vec<String>, crate::tiles::error::FetchTilesError> {
     
     let pb = crate::tiles::format::format_tiles(tiles);
 
     let req = Request::builder()
         .method(Method::GET)
-        .uri(format!("https://[{}]/maps/vt?pb={}", host, pb))
-        .header("Host", "maps.googleapis.com")
+        .uri(format!("https://maps.googleapis.com/maps/vt?pb={}", pb))
         .header("User-Agent", "Mozilla/5.0 (Windows NT 6.1; rv:31.0) Gecko/20100101 Firefox/31.0")
         .body(Empty::new())?;
 

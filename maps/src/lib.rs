@@ -1,5 +1,4 @@
 use thiserror::Error;
-use std::time::Duration;
 use tonic::transport::{Channel, ClientTlsConfig};
 pub mod tiles;
 mod places;
@@ -32,24 +31,6 @@ pub enum MapsJsInternalServiceClientError {
 
     #[error("Other: {0}")]
     Other(String)
-}
-
-pub async fn initialize_channel(ip: String) -> Result<Channel, MapsJsInternalServiceClientError> {
-    let tls = ClientTlsConfig::new()
-        .domain_name("maps.googleapis.com")
-        .with_native_roots();
-
-    let endpoint = Channel::from_shared(format!("https://{}:443", ip)).unwrap()
-        .tls_config(tls).unwrap()
-        .origin("https://maps.googleapis.com".parse().unwrap())
-        .timeout(Duration::from_secs(5));
-
-    match endpoint.connect().await {
-        Ok(channel) => Ok(channel),
-        Err(err) => {
-            Err(MapsJsInternalServiceClientError::ConnectionFailed(err.to_string()))
-        }
-    }
 }
 
 #[derive(Error, Debug)]
