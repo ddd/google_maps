@@ -1,0 +1,68 @@
+
+syntax = "proto3";
+
+package google.internal.maps.mapsjs.v1;
+
+service MapsJsInternalService {
+  rpc GetEntityDetails (GetEntityDetailsRequest) returns (GetEntityDetailsResponse) {}
+}
+
+message GetEntityDetailsRequest {
+    message EntityQuery {
+        message Entity {
+            string featureId = 1;
+        }
+        Entity entity = 1;
+    }
+    EntityQuery entityQuery = 1;
+
+    message LocalizationContext {
+        string language = 1;
+        string region = 2;
+    }
+    LocalizationContext localizationContext = 2;
+}
+
+message GetEntityDetailsResponse {
+    message EntityDetailsResult {
+        string title = 2;
+        int32 numRatingStars = 4;
+        string phoneNumber = 8;
+
+        message AuthorityPageLink {
+            string url = 1;
+        }
+        AuthorityPageLink authorityPageLink = 12;
+        string category = 13;
+        string singleLineAddress = 14;
+
+        message MenuLink {
+            string url = 1;
+        }
+        MenuLink menuLink = 29;
+        string localLanguageTitle = 32;
+
+        message PlusCode {
+            message GlobalCode {
+                string rawText = 1;
+            }
+            GlobalCode globalCode = 2;
+            message CompoundCode {
+                string compoundCode = 1;
+            }
+            CompoundCode compoundCode = 3;
+        }
+        PlusCode plusCode = 39;
+    }
+    EntityDetailsResult entityDetailsResult = 2;
+
+    message Camera {
+        message Location {
+            string altitude = 1;
+            string longitude = 2;
+            string latitude = 3;
+        }
+        Location location = 1;
+    }
+    Camera camera = 5;
+}
