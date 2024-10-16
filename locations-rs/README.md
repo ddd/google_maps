@@ -1,9 +1,9 @@
 
 ## locations-rs
 
-Rust program for finding all Google Maps place IDs given a zoom level and tile radius. This can be combined with [loc-metadata-rs](../location-metadata-rs) (WIP) to find the place name, rating etc. for every Google Maps location that exists.
+Rust program for finding all Google Maps place IDs given a zoom level and tile radius. This can be combined with [loc-metadata-rs](../loc-metadata-rs) (WIP) to find the place name, rating etc. for every Google Maps location that exists.
 
-An example place ID is `0d134e199a405a163` for the [Empire State Building](https://www.google.com/maps/place/data=!3m2!4b1!5s0x8b398fecd1aea119:0x76fa1e3ac5a94c70!4m6!3m5!1s0x89c259a9b3117469:0xd134e199a405a163!8m2!3d40.7484405!4d-73.9856644!16zL20vMDJuZF8).
+An example place ID is `0d134e199a405a163` for the [Empire State Building](https://www.google.com/maps/place/data=!3m2!4b1!5s0x0:0x0!4m6!3m5!1s0x0:0xd134e199a405a163!8m2!3d40.7484405!4d-73.9856644!16zL20vMDJuZF8).
 
 ### How it works
 
