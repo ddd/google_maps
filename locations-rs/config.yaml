@@ -1,0 +1,18 @@
+# the database config can be ignored if you are using the "file" output mode
+database:
+  uri: "192.168.0.101"
+  keyspace: "google_maps"
+  workers: 50
+
+options:
+  output: file # file or database
+  max_retries: 250
+  fetchers: 500
+
+tile_generation:
+  min_x: 0
+  max_x: 65535
+  min_y: 0
+  max_y: 65535
+  reverse: false # This reverses the order in which to query the tiles
+  zoom: 16

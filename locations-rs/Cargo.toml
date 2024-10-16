@@ -1,0 +1,27 @@
+[package]
+name = "locations"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tonic = { version = "0.11.0", features = ["tls", "tls-roots"] }
+tokio = { version = "1.38.0", features = ["full"] }
+tokio-macros = "2.3.0"
+scylla = "0.13"
+async-channel = "2.3.1"
+tracing = "0.1.40"
+tracing-subscriber = { version = "0.3.18", features = ["json"] }
+tracing-appender = "0.2.3"
+thiserror = "1.0"
+serde = { version = "1.0.204", features = ["derive"] }
+serde_json = "1.0.121"
+serde_yaml = "0.9.34"
+http-body-util = "0.1.2"
+hyper = { version = "1.4.1", features = ["full"] }
+hyper-tls = "0.6.0"
+hyper-util = { version = "0.1", features = ["full"] }
+bytes = "1.7.1"
+parking_lot = "0.12.3"
+native-tls = "0.2.12"
+maps = { path = "../maps" }
+anyhow = "1.0.87"
